@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Source\Support\StructuredData;
+namespace WilderAmorim\StructuredData;
 
 class BlogPosting extends Schema
 {

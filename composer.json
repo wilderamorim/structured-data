@@ -1,11 +1,12 @@
 {
   "name": "WilderAmorim/StructuredData",
-  "description": "Component for insert a structured Data in your Web site with features for blogs, events and other functionalities. StructuredData Component's so easy and Fast!",
+  "description": "Structured Data (schema.org) is a set of extensible schemas makes it easier for webmasters and developers to embed  structured data on their web pages for use by search engines and other applications.",
   "keywords": [
     "Structured Data",
     "Schema.org",
     "Rich Snippets",
     "Microformats",
+    "Markup",
     "SEO",
     "Google"
   ],
@@ -15,6 +16,7 @@
     {
       "name": "Wilder Amorim",
       "email": "agencia@uebi.com.br",
+      "homepage": "https://www.uebi.com.br",
       "role": "Developer"
     },
     {

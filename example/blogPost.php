@@ -24,7 +24,7 @@ $post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-d
  * Schema: BlogPosting
  * @see https://schema.org/BlogPosting
  */
-$blogPost = (new BlogPosting("Wayne Enterprises, Inc."))
+$blogPost = (new BlogPosting('Wayne Enterprises, Inc.'))
     ->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified)
     ->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}")
     ->author('Bruce Wayne', 'https://upload.wikimedia.org/wikipedia/pt/4/46/Bruce_Wayne_06.jpg', [
@@ -32,8 +32,8 @@ $blogPost = (new BlogPosting("Wayne Enterprises, Inc."))
         'https://www.instagram.com/zuck'
     ])
     ->publisher('https://www.yourdomain.com', 'https://www.yourdomain.com/logo.png', [
-        'https://www.facebook.com/zuck',
-        'https://www.instagram.com/zuck'
+        'https://www.facebook.com/facebook',
+        'https://www.instagram.com/facebook'
     ])
     ->image("https://www.yourdomain.com/storage/{$post->cover}");
 

@@ -9,17 +9,13 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/WilderAmorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/WilderAmorim/structured-data)
 [![Total Downloads](https://img.shields.io/packagist/dt/WilderAmorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/cWilderAmorim/structured-data)
 
-###### Structured Data Library is a small set of classes developed in UpInside's Full Stack PHP Developer training for integration into the webservice of a SaaS platform developed in the course..
+###### Structured Data (schema.org) is a set of extensible schemas makes it easier for webmasters and developers to embed  structured data on their web pages for use by search engines and other applications.
 
-Structured Data Library é um pequeno conjunto de classes desenvolvidas na formação Full Stack PHP Developer da UpInside para integração ao webservice de uma plataforma SaaS desenvolvida no curso.
-
-Você pode saber mais **[clicando aqui](https://www.upinside.com.br/fsphp)**.
+Dados estruturados (schema.org) é um conjunto de esquemas extensíveis que facilita para webmasters e desenvolvedores incorporar dados estruturados em suas páginas da web para serem usados por mecanismos de pesquisa e outros aplicativos.
 
 ### Highlights
 
 - Simple installation (Instalação simples)
-- Abstraction of all API methods (Abstração de todos os métodos da API)
-- Easy authentication with login and password (Fácil autenticação com login e senha)
 - Composer ready and PSR-2 compliant (Pronto para o composer e compatível com PSR-2)
 
 ## Installation
@@ -42,7 +38,7 @@ composer require WilderAmorim/structured-data
 
 Para mais detalhes sobre como usar, veja uma pasta de exemplo no diretório do componente. Nela terá um exemplo de uso para cada classe. Ele funciona assim:
 
-#### User endpoint:
+#### BlogPosting:
 
 ```php
 <?php
@@ -70,7 +66,7 @@ $post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-d
  * Schema: BlogPosting
  * @see https://schema.org/BlogPosting
  */
-$blogPost = (new BlogPosting("Wayne Enterprises, Inc."))
+$blogPost = (new BlogPosting('Wayne Enterprises, Inc.'))
     ->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified)
     ->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}")
     ->author('Bruce Wayne', 'https://upload.wikimedia.org/wikipedia/pt/4/46/Bruce_Wayne_06.jpg', [
@@ -78,8 +74,8 @@ $blogPost = (new BlogPosting("Wayne Enterprises, Inc."))
         'https://www.instagram.com/zuck'
     ])
     ->publisher('https://www.yourdomain.com', 'https://www.yourdomain.com/logo.png', [
-        'https://www.facebook.com/zuck',
-        'https://www.instagram.com/zuck'
+        'https://www.facebook.com/facebook',
+        'https://www.instagram.com/facebook'
     ])
     ->image("https://www.yourdomain.com/storage/{$post->cover}");
 

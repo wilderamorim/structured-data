@@ -31,7 +31,7 @@
   },
   "autoload": {
     "psr-4": {
-      "wilder-amorim\\StructuredData\\": "src"
+      "WilderAmorim\\StructuredData\\": "src"
     }
   }
 }

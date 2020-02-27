@@ -1,5 +1,5 @@
 {
-  "name": "WilderAmorim/StructuredData",
+  "name": "wilder-amorim/StructuredData",
   "description": "Structured Data (schema.org) is a set of extensible schemas makes it easier for webmasters and developers to embed  structured data on their web pages for use by search engines and other applications.",
   "keywords": [
     "Structured Data",
@@ -31,7 +31,7 @@
   },
   "autoload": {
     "psr-4": {
-      "WilderAmorim\\StructuredData\\": "src"
+      "wilder-amorim\\StructuredData\\": "src"
     }
   }
 }

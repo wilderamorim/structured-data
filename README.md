@@ -1,13 +1,13 @@
 # Structured Data Library Test
 
-[![Maintainer](http://img.shields.io/badge/maintainer-@WilderAmorim-blue.svg?style=flat-square)](https://twitter.com/WilderAmorim)
-[![Source Code](http://img.shields.io/badge/source-WilderAmorim/structured-data-blue.svg?style=flat-square)](https://github.com/WilderAmorim/structured-data)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/WilderAmorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/WilderAmorim/structured-data)
-[![Latest Version](https://img.shields.io/github/release/WilderAmorim/structured-data.svg?style=flat-square)](https://github.com/WilderAmorim/structured-data/releases)
+[![Maintainer](http://img.shields.io/badge/maintainer-@wilder-amorim-blue.svg?style=flat-square)](https://twitter.com/wilder-amorim)
+[![Source Code](http://img.shields.io/badge/source-wilder-amorim/structured-data-blue.svg?style=flat-square)](https://github.com/wilder-amorim/structured-data)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/wilder-amorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/wilder-amorim/structured-data)
+[![Latest Version](https://img.shields.io/github/release/wilder-amorim/structured-data.svg?style=flat-square)](https://github.com/wilder-amorim/structured-data/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build](https://img.shields.io/scrutinizer/build/g/WilderAmorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/WilderAmorim/structured-data)
-[![Quality Score](https://img.shields.io/scrutinizer/g/WilderAmorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/WilderAmorim/structured-data)
-[![Total Downloads](https://img.shields.io/packagist/dt/WilderAmorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/cWilderAmorim/structured-data)
+[![Build](https://img.shields.io/scrutinizer/build/g/wilder-amorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/wilder-amorim/structured-data)
+[![Quality Score](https://img.shields.io/scrutinizer/g/wilder-amorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/wilder-amorim/structured-data)
+[![Total Downloads](https://img.shields.io/packagist/dt/wilder-amorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/cwilder-amorim/structured-data)
 
 ###### Structured Data (schema.org) is a set of extensible schemas makes it easier for webmasters and developers to embed  structured data on their web pages for use by search engines and other applications.
 
@@ -23,13 +23,13 @@ Dados estruturados (schema.org) é um conjunto de esquemas extensíveis que faci
 Structured Data is available via Composer:
 
 ```bash
-"WilderAmorim/structured-data": "^1.0"
+"wilder-amorim/structured-data": "^1.0"
 ```
 
 or run
 
 ```bash
-composer require WilderAmorim/structured-data
+composer require wilder-amorim/structured-data
 ```
 
 ## Documentation
@@ -95,7 +95,7 @@ $blogPost->debug();
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/WilderAmorim/structured-data/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/wilder-amorim/structured-data/blob/master/CONTRIBUTING.md) for details.
 
 ## Support
 
@@ -107,11 +107,11 @@ Thank you
 
 ## Credits
 
-- [Wilder Amorim](https://github.com/WilderAmorim) (Developer)
+- [Wilder Amorim](https://github.com/wilder-amorim) (Developer)
 - [Sérgio Danilo Jr.](https://github.com/sergiodanilojr) (Developer)
 - [Agência Uebi](https://www.uebi.com.br) (Team)
-- [All Contributors](https://github.com/WilderAmorim/structured-data/contributors) (This Rock)
+- [All Contributors](https://github.com/wilder-amorim/structured-data/contributors) (This Rock)
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/WilderAmorim/structured-data/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/wilder-amorim/structured-data/blob/master/LICENSE) for more information.

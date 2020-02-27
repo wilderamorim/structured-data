@@ -68,8 +68,8 @@ abstract class Schema
             '@type' => 'Organization',
             'name' => $this->company,
             'url' => $url,
-            'logo' => $this->imageObject($logo),
-            'image' => $this->imageObject($image),
+            'logo' => $this->imageObject,
+            'image' => $this->imageObject,
             'sameAs' => $sameAs
         ];
         return $this;

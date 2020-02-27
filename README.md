@@ -54,7 +54,7 @@ require __DIR__ . "/../vendor/autoload.php";
 use WilderAmorim\StructuredData\BlogPosting;
 
 /**
- * POST SINGLE
+ * SINGLE POST EXAMPLE
  */
 $post = new stdClass();
 $post->title = "It's not who I am underneath but what I do that defines me.";
@@ -77,17 +77,17 @@ $blogPost = (new BlogPosting("Wayne Enterprises, Inc."))
         'https://www.facebook.com/zuck',
         'https://www.instagram.com/zuck'
     ])
-    ->publisher('https://www.yourdomain.com', 'https://www.dccomics.com/sites/all/themes/dc_comics_bp/logo.png', [
+    ->publisher('https://www.yourdomain.com', 'https://www.yourdomain.com/logo.png', [
         'https://www.facebook.com/zuck',
         'https://www.instagram.com/zuck'
     ])
     ->image("https://www.yourdomain.com/storage/{$post->cover}");
 
+//json
+echo $blogPost->structuredData();
+
 //debug
 $blogPost->debug();
-
-//json
-$blogPost->structuredData();
 
 ?>
 
@@ -103,9 +103,9 @@ Please see [CONTRIBUTING](https://github.com/WilderAmorim/structured-data/blob/m
 
 ## Support
 
-###### Security: If you discover any security related issues, please email meu@email.com.br instead of using the issue tracker.
+###### Security: If you discover any security related issues, please email agencia@uebi.com.br instead of using the issue tracker.
 
-Se você descobrir algum problema relacionado à segurança, envie um e-mail para meu@email.com.br em vez de usar o rastreador de problemas.
+Se você descobrir algum problema relacionado à segurança, envie um e-mail para agencia@uebi.com.br em vez de usar o rastreador de problemas.
 
 Thank you
 

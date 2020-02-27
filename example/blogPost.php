@@ -8,7 +8,7 @@ require dirname(__DIR__, 1) . "/vendor/autoload.php";
 use WilderAmorim\StructuredData\BlogPosting;
 
 /**
- * POST SINGLE
+ * SINGLE POST EXAMPLE
  */
 $post = new stdClass();
 $post->title = "It's not who I am underneath but what I do that defines me.";
@@ -31,14 +31,18 @@ $blogPost = (new BlogPosting("Wayne Enterprises, Inc."))
         'https://www.facebook.com/zuck',
         'https://www.instagram.com/zuck'
     ])
-    ->publisher('https://www.yourdomain.com', 'https://www.dccomics.com/sites/all/themes/dc_comics_bp/logo.png', [
+    ->publisher('https://www.yourdomain.com', 'https://www.yourdomain.com/logo.png', [
         'https://www.facebook.com/zuck',
         'https://www.instagram.com/zuck'
     ])
     ->image("https://www.yourdomain.com/storage/{$post->cover}");
 
+//json
+echo $blogPost->structuredData();
 
+//debug
 $blogPost->debug();
+
 ?>
 
 <!--insert json-->

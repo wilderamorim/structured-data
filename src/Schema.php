@@ -60,35 +60,34 @@ abstract class Schema
     }
 
     /**
-     * @param string $name
-     * @param string $url
-     * @param array|null $sameAs
-     * @return Schema
+     * @see https://schema.org/Organization
      */
-    protected function organization(string $name, string $url, array $sameAs = null): Schema
+    protected function organization(string $url, string $logo, string $image, array $sameAs = null): Schema
     {
         $this->organization = (object)[
             '@type' => 'Organization',
-            'name' => $name,
+            'name' => $this->company,
             'url' => $url,
-            'logo' => $this->imageObject,
-            'image' => $this->imageObject,
+            'logo' => $this->imageObject($logo),
+            'image' => $this->imageObject($image),
             'sameAs' => $sameAs
         ];
         return $this;
     }
 
     /**
-     * @param string $logo
+     * @see https://schema.org/ImageObject
+     *
+     * @param string $url
      * @param int $width
      * @param int $height
      * @return Schema
      */
-    protected function imageObject(string $logo, int $width = 1280, int $height = 720): Schema
+    protected function imageObject(string $url, int $width = 1280, int $height = 720): Schema
     {
         $this->imageObject = (object)[
             '@type' => 'ImageObject',
-            'url' => $logo,
+            'url' => $url,
             'width' => $width,
             'height' => $height,
             'caption' => $this->company

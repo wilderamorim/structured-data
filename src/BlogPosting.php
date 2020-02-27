@@ -15,7 +15,7 @@ class BlogPosting extends Schema
     private $data;
 
     /**
-     *
+     * @see https://schema.org/BlogPosting
      */
     const TYPE = 'BlogPosting';
 
@@ -26,8 +26,48 @@ class BlogPosting extends Schema
     public function __construct(string $company)
     {
         $this->data = new \stdClass();
-
         parent::__construct($company);
+    }
+
+    /**
+     * @see https://schema.org/mainEntityOfPage
+     *
+     * @param string $url
+     * @param string $type
+     * @return BlogPosting
+     */
+    public function mainEntityOfPage(string $url, string $type = Schema::TYPE): BlogPosting
+    {
+        $this->data->mainEntityOfPage = [
+            '@type' => $type,
+            '@id' => $url
+        ];
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $image
+     * @param array|null $sameAs
+     * @return Schema
+     */
+    public function author(string $name, string $image, array $sameAs = null): Schema
+    {
+        return $this->person($name, $image, $sameAs);
+    }
+
+    public function publisher(string $url, string $logo, array $sameAs = null): Schema
+    {
+        return $this->organization($url, $logo, $logo, $sameAs);
+    }
+
+    /**
+     * @param string $url
+     * @return Schema
+     */
+    public function image(string $url): Schema
+    {
+        return $this->imageObject($url);
     }
 
     /**
@@ -38,7 +78,7 @@ class BlogPosting extends Schema
      * @param string|null $dateModified
      * @return BlogPosting
      */
-    public function insertHeader(
+    public function start(
         string $headline,
         string $description,
         string $articleBody,
@@ -56,56 +96,11 @@ class BlogPosting extends Schema
     }
 
     /**
-     * @param string $url
-     * @param string $type
-     * @return BlogPosting
-     */
-    public function mainEntityOfPage(string $url, string $type = Schema::TYPE): BlogPosting
-    {
-        $this->data->mainEntityOfPage = [
-            '@type' => $type,
-            '@id' => $url
-        ];
-        return $this;
-    }
-
-    /**
      * @return object
      */
     public function header(): object
     {
         return $this->data->header;
-    }
-
-    /**
-     * @param string $name
-     * @param string $image
-     * @param array|null $sameAs
-     * @return Schema
-     */
-    public function author(string $name, string $image, array $sameAs = null): Schema
-    {
-        return $this->person($name, $image, $sameAs);
-    }
-
-    /**
-     * @param string $name
-     * @param string $url
-     * @param array|null $sameAs
-     * @return Schema
-     */
-    public function publisher(string $name, string $url, array $sameAs = null): Schema
-    {
-        return $this->organization($name, $url, $sameAs);
-    }
-
-    /**
-     * @param string $cover
-     * @return Schema
-     */
-    public function image(string $cover): Schema
-    {
-        return $this->imageObject($cover);
     }
 
     /**

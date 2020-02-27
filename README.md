@@ -1,17 +1,17 @@
-# CaféApi Library Test
+# Structured Data Library Test
 
-[![Maintainer](http://img.shields.io/badge/maintainer-@robsonvleite-blue.svg?style=flat-square)](https://twitter.com/robsonvleite)
-[![Source Code](http://img.shields.io/badge/source-robsonvleite/cafeapi-blue.svg?style=flat-square)](https://github.com/robsonvleite/cafeapi)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/robsonvleite/cafeapi.svg?style=flat-square)](https://packagist.org/packages/robsonvleite/cafeapi)
-[![Latest Version](https://img.shields.io/github/release/robsonvleite/cafeapi.svg?style=flat-square)](https://github.com/robsonvleite/cafeapi/releases)
+[![Maintainer](http://img.shields.io/badge/maintainer-@WilderAmorim-blue.svg?style=flat-square)](https://twitter.com/WilderAmorim)
+[![Source Code](http://img.shields.io/badge/source-WilderAmorim/structured-data-blue.svg?style=flat-square)](https://github.com/WilderAmorim/structured-data)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/WilderAmorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/WilderAmorim/structured-data)
+[![Latest Version](https://img.shields.io/github/release/WilderAmorim/structured-data.svg?style=flat-square)](https://github.com/WilderAmorim/structured-data/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build](https://img.shields.io/scrutinizer/build/g/robsonvleite/cafeapi.svg?style=flat-square)](https://scrutinizer-ci.com/g/robsonvleite/cafeapi)
-[![Quality Score](https://img.shields.io/scrutinizer/g/robsonvleite/cafeapi.svg?style=flat-square)](https://scrutinizer-ci.com/g/robsonvleite/cafeapi)
-[![Total Downloads](https://img.shields.io/packagist/dt/robsonvleite/cafeapi.svg?style=flat-square)](https://packagist.org/packages/crobsonvleite/cafeapi)
+[![Build](https://img.shields.io/scrutinizer/build/g/WilderAmorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/WilderAmorim/structured-data)
+[![Quality Score](https://img.shields.io/scrutinizer/g/WilderAmorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/WilderAmorim/structured-data)
+[![Total Downloads](https://img.shields.io/packagist/dt/WilderAmorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/cWilderAmorim/structured-data)
 
-###### CaféApi Library is a small set of classes developed in UpInside's Full Stack PHP Developer training for integration into the webservice of a SaaS platform developed in the course..
+###### Structured Data Library is a small set of classes developed in UpInside's Full Stack PHP Developer training for integration into the webservice of a SaaS platform developed in the course..
 
-CaféApi Library é um pequeno conjunto de classes desenvolvidas na formação Full Stack PHP Developer da UpInside para integração ao webservice de uma plataforma SaaS desenvolvida no curso.
+Structured Data Library é um pequeno conjunto de classes desenvolvidas na formação Full Stack PHP Developer da UpInside para integração ao webservice de uma plataforma SaaS desenvolvida no curso.
 
 Você pode saber mais **[clicando aqui](https://www.upinside.com.br/fsphp)**.
 
@@ -24,16 +24,16 @@ Você pode saber mais **[clicando aqui](https://www.upinside.com.br/fsphp)**.
 
 ## Installation
 
-Uploader is available via Composer:
+Structured Data is available via Composer:
 
 ```bash
-"robsonvleite/cafeapi": "^1.0"
+"WilderAmorim/structured-data": "^1.0"
 ```
 
 or run
 
 ```bash
-composer require robsonvleite/cafeapi
+composer require WilderAmorim/structured-data
 ```
 
 ## Documentation
@@ -47,112 +47,59 @@ Para mais detalhes sobre como usar, veja uma pasta de exemplo no diretório do c
 ```php
 <?php
 
-require __DIR__ . "/../vendor/autoload.php";
-
-use RobsonVLeite\CafeApi\Me;
-
-$me = new Me(
-    "suaapi.url.com",
-    "seu@email.com.br",
-    "suasenha"
-);
-
-//me
-$user = $me->me();
-
-//update
-$user->update([
-    "first_name" => "Robson",
-    "last_name" => "Leite",
-    "genre" => "male",
-    "datebirth" => "1980-01-02",
-    "document" => "888888888"
-]);
-
-//photo
-$user->photo($_FILES["photo"]);
-
-//test and result
-if ($user->error()) {
-    $user->error(); //object
-} else {
-    $user->response(); //object
-}
-```
-
-#### Invoices endpoint:
-
-```php
-<?php
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use RobsonVLeite\CafeApi\Invoices;
 
-$invoices = new Invoices(
-    "suaapi.url.com",
-    "seu@email.com.br",
-    "suasenha"
-);
+use WilderAmorim\StructuredData\BlogPosting;
 
-//index
-$index = $invoices->index(null);
+/**
+ * POST SINGLE
+ */
+$post = new stdClass();
+$post->title = "It's not who I am underneath but what I do that defines me.";
+$post->slug = "it-s-not-who-i-am-underneath-but-what-i-do-that-defines-me";
+$post->subtitle = "Bruce Wayne, eccentric billionaire. No guns, no killing. Swear to me! I'm Batman";
+$post->content = "<p>No guns, no killing. Bruce Wayne, eccentric billionaire. Hero can be anyone. Even a man knowing something as simple and reassuring as putting a coat around a young boy shoulders to let him know the world hadn't ended.</p>
+<p>Accomplice? I'm gonna tell them the whole thing was your idea. Someone like you. Someone who'll rattle the cages. I'll be standing where l belong. Between you and the peopIe of Gotham. It's not who I am underneath but what I do that defines me.</p>";
+$post->post_date = "2020-12-30";
+$post->post_modified = "2020-12-31";
+$post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-defines-me.jpg";
 
-//index filter
-$index = $invoices->index([
-    "wallet_id" => 23,
-    "type" => "fixed_income",
-    "status" => "paid",
-    "page" => 2
-]);
+/**
+ * Schema: BlogPosting
+ * @see https://schema.org/BlogPosting
+ */
+$blogPost = (new BlogPosting("Wayne Enterprises, Inc."))
+    ->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified)
+    ->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}")
+    ->author('Bruce Wayne', 'https://upload.wikimedia.org/wikipedia/pt/4/46/Bruce_Wayne_06.jpg', [
+        'https://www.facebook.com/zuck',
+        'https://www.instagram.com/zuck'
+    ])
+    ->publisher('https://www.yourdomain.com', 'https://www.dccomics.com/sites/all/themes/dc_comics_bp/logo.png', [
+        'https://www.facebook.com/zuck',
+        'https://www.instagram.com/zuck'
+    ])
+    ->image("https://www.yourdomain.com/storage/{$post->cover}");
 
-//create
-$invoices->create([
-    "wallet_id" => 23,
-    "category_id" => 3,
-    "description" => "Pagamento Cartão",
-    "type" => "expense",
-    "value" => "25000.20",
-    "due_at" => "2019-10-02",
-    "repeat_when" => "single",
-    "period" => "month",
-    "enrollments" => "1",
-]);
+//debug
+$blogPost->debug();
 
-//read
-$invoices->read(91);
+//json
+$blogPost->structuredData();
 
-//update
-$invoiceId = 91;
-$invoices->update($invoiceId, [
-    "wallet_id" => 23,
-    "category_id" => 3,
-    "description" => "Pagamento Cartão",
-    "value" => "25000.20",
-    "due_day" => 25,
-    "status" => "paid"
-]);
+?>
 
-//delete
-$invoices->delete(91);
-
-//test and result
-if ($invoices->error()) {
-    $invoices->error(); //object
-} else {
-    $invoices->response(); //object
-}
+<!--insert json-->
+<script type="application/ld+json">
+    <?= $blogPost->structuredData(); ?>
+</script>
 ```
-
-### Others
-
-###### You also have classes for endpoints of portfolios and signatures, all the documentation of use with practical examples is available in the examples folder library. Please check there.
-
-Você também conta com classes para os endpoints de carteiras e assinaturas, toda documentação de uso com exemplos práticos está disponível na pasta examples desta biblioteca. Por favor, consulte lá.
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/robsonvleite/uploader/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/WilderAmorim/structured-data/blob/master/CONTRIBUTING.md) for details.
 
 ## Support
 
@@ -164,10 +111,11 @@ Thank you
 
 ## Credits
 
-- [Robson V. Leite](https://github.com/robsonvleite) (Developer)
-- [UpInside Treinamentos](https://github.com/robsonvleite) (Team)
-- [All Contributors](https://github.com/robsonvleite/uploader/contributors) (This Rock)
+- [Wilder Amorim](https://github.com/WilderAmorim) (Developer)
+- [Sérgio Danilo Jr.](https://github.com/sergiodanilojr) (Developer)
+- [Agência Uebi](https://www.uebi.com.br) (Team)
+- [All Contributors](https://github.com/WilderAmorim/structured-data/contributors) (This Rock)
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/robsonvleite/cafeapi/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/WilderAmorim/structured-data/blob/master/LICENSE) for more information.

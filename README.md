@@ -1,6 +1,6 @@
-# Structured Data Library Test
+# Structured Data
 
-[![Maintainer](http://img.shields.io/badge/maintainer-@wilder-amorim-blue.svg?style=flat-square)](https://twitter.com/wilder-amorim)
+[![Maintainer](http://img.shields.io/badge/maintainer-@wilder-amorim-blue.svg?style=flat-square)](https://twitter.com/WilderAmorim)
 [![Source Code](http://img.shields.io/badge/source-wilder-amorim/structured-data-blue.svg?style=flat-square)](https://github.com/wilder-amorim/structured-data)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/wilder-amorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/wilder-amorim/structured-data)
 [![Latest Version](https://img.shields.io/github/release/wilder-amorim/structured-data.svg?style=flat-square)](https://github.com/wilder-amorim/structured-data/releases)

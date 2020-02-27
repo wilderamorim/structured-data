@@ -62,7 +62,7 @@ abstract class Schema
     /**
      * @see https://schema.org/Organization
      */
-    protected function organization(string $url, string $logo, string $image, array $sameAs = null): Schema
+    protected function organization(string $url, array $sameAs = null): Schema
     {
         $this->organization = (object)[
             '@type' => 'Organization',

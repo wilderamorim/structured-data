@@ -56,9 +56,9 @@ class BlogPosting extends Schema
         return $this->person($name, $image, $sameAs);
     }
 
-    public function publisher(string $url, string $logo, array $sameAs = null): Schema
+    public function publisher(string $url, array $sameAs = null): Schema
     {
-        return $this->organization($url, $logo, $logo, $sameAs);
+        return $this->organization($url, $sameAs);
     }
 
     /**

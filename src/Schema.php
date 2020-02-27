@@ -3,8 +3,6 @@
 
 namespace WilderAmorim\StructuredData;
 
-use DateTime;
-
 /**
  * Class Schema
  * @package WilderAmorim\StructuredData
@@ -24,15 +22,14 @@ abstract class Schema
     protected $company;
 
     /**
-     *
+     * @see http://schema.org
      */
     const CONTEXT = 'http://schema.org';
 
     /**
-     *
+     * @see https://schema.org/WebPage
      */
     const TYPE = 'WebPage';
-
 
     /**
      * Schema constructor.
@@ -44,6 +41,8 @@ abstract class Schema
     }
 
     /**
+     * @see https://schema.org/Person
+     *
      * @param string $name
      * @param string $image
      * @param array $sameAs
@@ -55,7 +54,7 @@ abstract class Schema
             '@type' => 'Person',
             'name' => $name,
             'image' => $image,
-            'sameAs' => (object)$sameAs
+            'sameAs' => $sameAs
         ];
         return $this;
     }
@@ -74,7 +73,7 @@ abstract class Schema
             'url' => $url,
             'logo' => $this->imageObject,
             'image' => $this->imageObject,
-            'sameAs' => (object)$sameAs
+            'sameAs' => $sameAs
         ];
         return $this;
     }
@@ -112,15 +111,19 @@ abstract class Schema
      */
     protected function setDate(string $date): string
     {
-        $needle = (strpos($date, '/') ? '/' : '-');
+        $date = (strpos($date, ' ') ? explode(' ', $date)[0] : $date);
 
-        if ($needle == '/') {
-            list($d, $m, $y) = explode($needle, $date);
-            $date = "{$y}-{$m}-{$d}";
-        } else {
-            list($y, $m, $d) = explode($needle, $date);
-            $date = "{$y}-{$m}-{$d}";
+        $date = str_replace('/', '-', $date);
+        $date = explode('-', $date);
+
+        if (strlen($date[0]) == 4) {
+            $date = "{$date[0]}-{$date[1]}-$date[2]";
         }
+
+        if (strlen($date[2]) == 4) {
+            $date = "{$date[2]}-{$date[1]}-$date[0]";
+        }
+
         return $date;
     }
 }

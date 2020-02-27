@@ -17,7 +17,7 @@ class BlogPosting extends Schema
     /**
      *
      */
-    const TYPE_BLOG = 'BlogPosting';
+    const TYPE = 'BlogPosting';
 
     /**
      * BlogPosting constructor.
@@ -60,7 +60,7 @@ class BlogPosting extends Schema
      * @param string $type
      * @return BlogPosting
      */
-    public function mainEntityOfPage(string $url, string $type = self::TYPE): BlogPosting
+    public function mainEntityOfPage(string $url, string $type = Schema::TYPE): BlogPosting
     {
         $this->data->mainEntityOfPage = [
             '@type' => $type,
@@ -130,7 +130,7 @@ class BlogPosting extends Schema
     {
         $structuredData = [
             '@context' => self::CONTEXT,
-            '@type' => self::TYPE_BLOG,
+            '@type' => self::TYPE,
             'headline' => $this->data->header->headline,
             'description' => $this->data->header->description,
             'datePublished' => $this->data->header->datePublished,
@@ -145,7 +145,7 @@ class BlogPosting extends Schema
     }
 
     /**
-     * Method responsable for debug all data
+     * Responsible method for debug all data
      */
     public function debug(): void
     {

@@ -3,65 +3,152 @@
 
 namespace WilderAmorim\StructuredData;
 
+/**
+ * Class BlogPosting
+ * @package WilderAmorim\StructuredData
+ */
 class BlogPosting extends Schema
 {
-    # HEADER
-    private $headline;
-    private $description;
-    private $datePublished;
-    private $dateModified;
-    private $articleBody;
-
-    # METHODS
-    protected $mainEntityOfPage;
-    protected $author;
-    protected $publisher;
-    protected $image;
+    /**
+     * @var \stdClass
+     */
     private $data;
 
-    public function __construct()
+    /**
+     *
+     */
+    const TYPE_BLOG = 'BlogPosting';
+
+    /**
+     * BlogPosting constructor.
+     * @param string $company
+     */
+    public function __construct(string $company)
     {
-        $this->data->header = [
-            '@context' => self::CONTEXT,
-            '@type' => 'BlogPosting',
-            'headline' => $this->headline,
-            'description' => $this->description,
-            'datePublished' => $this->datePublished,
-            'dateModified' => $this->dateModified,
-            'articleBody' => strip_tags($this->articleBody)
-        ];
+        $this->data = new \stdClass();
+
+        parent::__construct($company);
     }
 
-    public function header()
+    /**
+     * @param string $headline
+     * @param string $description
+     * @param string $articleBody
+     * @param string $datePublished
+     * @param string|null $dateModified
+     * @return BlogPosting
+     */
+    public function insertHeader(
+        string $headline,
+        string $description,
+        string $articleBody,
+        string $datePublished,
+        ?string $dateModified = null
+    ): BlogPosting {
+        $this->data->header = (object)[
+            'headline' => $headline,
+            'description' => $description,
+            'articleBody' => strip_tags($articleBody),
+            'datePublished' => $this->setDate($datePublished),
+            'dateModified' => (!is_null($dateModified) ? $this->setDate($dateModified) : $this->setDate($datePublished))
+        ];
+        return $this;
+    }
+
+    /**
+     * @param string $url
+     * @param string $type
+     * @return BlogPosting
+     */
+    public function mainEntityOfPage(string $url, string $type = self::TYPE): BlogPosting
+    {
+        $this->data->mainEntityOfPage = [
+            '@type' => $type,
+            '@id' => $url
+        ];
+        return $this;
+    }
+
+    /**
+     * @return object
+     */
+    public function header(): object
     {
         return $this->data->header;
     }
 
-    public function mainEntityOfPage(string $url, string $type = self::TYPE)
+    /**
+     * @param string $name
+     * @param string $image
+     * @param array|null $sameAs
+     * @return Schema
+     */
+    public function author(string $name, string $image, array $sameAs = null): Schema
     {
-        return $this->mainEntityOfPage = [
-            '@type' => $type,
-            '@id' => $url
-        ];
+        return $this->person($name, $image, $sameAs);
     }
 
-    public function author(string $name, string $image)
+    /**
+     * @param string $name
+     * @param string $url
+     * @param array|null $sameAs
+     * @return Schema
+     */
+    public function publisher(string $name, string $url, array $sameAs = null): Schema
     {
-        return $this->person($name, $image);
+        return $this->organization($name, $url, $sameAs);
     }
 
-    public function publisher(string $name, string $url, string $logo)
-    {
-        return $this->organization($name, $url, $logo);
-    }
-
-    public function image(string $cover)
+    /**
+     * @param string $cover
+     * @return Schema
+     */
+    public function image(string $cover): Schema
     {
         return $this->imageObject($cover);
     }
 
-    public function data()
+    /**
+     * @return object
+     */
+    public function data(): object
     {
+        $this->data = (object)[
+            'header' => $this->header(),
+            'mainEntityOfPage' => (object)$this->data->mainEntityOfPage,
+            'author' => (object)$this->person,
+            'image' => (object)$this->imageObject,
+            'publisher' => (object)$this->organization
+        ];
         return $this->data;
+    }
+
+    /**
+     * @return string
+     */
+    public function structuredData(): string
+    {
+        $structuredData = [
+            '@context' => self::CONTEXT,
+            '@type' => self::TYPE_BLOG,
+            'headline' => $this->data->header->headline,
+            'description' => $this->data->header->description,
+            'datePublished' => $this->data->header->datePublished,
+            'dateModified' => $this->data->header->dateModified,
+            'articleBody' => $this->data->header->articleBody,
+            'author' => $this->person,
+            'mainEntityOfPage' => $this->data->mainEntityOfPage,
+            'publisher' => [$this->organization],
+            'image' => $this->imageObject
+        ];
+        return $this->json($structuredData);
+    }
+
+    /**
+     * Method responsable for debug all data
+     */
+    public function debug(): void
+    {
+        var_dump($this->data());
     }
 }

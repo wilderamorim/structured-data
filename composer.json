@@ -1,0 +1,35 @@
+{
+  "name": "WilderAmorim/StructuredData",
+  "description": "Component for insert a structured Data in your Web site with features for blogs, events and other functionalities. StructuredData Component's so easy and Fast!",
+  "keywords": [
+    "Structured Data",
+    "Schema.org",
+    "Rich Snippets",
+    "Microformats",
+    "SEO",
+    "Google"
+  ],
+  "homepage": "http://www.uebi.com.br",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Wilder Amorim",
+      "email": "agencia@uebi.com.br",
+      "role": "Developer"
+    },
+    {
+      "name": "Sérgio Danilo Jr",
+      "email": "sergiodanilojr@hotmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "WilderAmorim\\StructuredData\\": "src"
+    }
+  }
+}

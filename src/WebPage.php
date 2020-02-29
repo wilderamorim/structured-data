@@ -155,7 +155,7 @@ class WebPage extends Schema
     }
 
 
-    public function data()
+    public function data(): object
     {
         $this->data = (object)[
             "header" => $this->header(),
@@ -175,11 +175,4 @@ class WebPage extends Schema
     {
         var_dump($this->data());
     }
-
-    //PROTECTED METHODS
-
-
-    //PRIVATE METHODS
-
-
 }

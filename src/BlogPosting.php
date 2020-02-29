@@ -21,12 +21,15 @@ class BlogPosting extends Schema
 
     /**
      * BlogPosting constructor.
-     * @param string $company
      */
-    public function __construct(string $company)
+    public function __construct(InitialSchema $initialSchema)
     {
         $this->data = new \stdClass();
-        parent::__construct($company);
+
+        $this->companyName = $initialSchema->company;
+        $this->companyUrl = $initialSchema->url;
+        $this->companySameAs = $initialSchema->sameAs;
+        parent::__construct();
     }
 
     /**
@@ -56,16 +59,16 @@ class BlogPosting extends Schema
         return $this->person($name, $image, $sameAs);
     }
 
-    public function publisher(string $url, array $sameAs = null): Schema
+    public function publisher(string $image, array $sameAs = null): Schema
     {
-        return $this->organization($url, $sameAs);
+        return $this->organization($image, $image, $sameAs);
     }
 
     /**
      * @param string $url
      * @return Schema
      */
-    public function image(string $url): Schema
+    public function image(string $url): array
     {
         return $this->imageObject($url);
     }

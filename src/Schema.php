@@ -19,7 +19,13 @@ abstract class Schema
     protected $imageObject;
 
     /** @var string */
-    protected $company;
+    protected $companyName;
+
+    /**  @var string */
+    protected $companyUrl;
+
+    /** @var array */
+    protected $companySameAs;
 
     /**
      * @see http://schema.org
@@ -31,13 +37,28 @@ abstract class Schema
      */
     const TYPE = 'WebPage';
 
+
     /**
      * Schema constructor.
-     * @param string|null $company
      */
-    public function __construct(string $company = null)
+    public function __construct()
     {
-        $this->company = $company;
+    }
+
+    /**
+     * @return Schema
+     */
+    protected function companyUrl(): string
+    {
+        return $this->companyUrl;
+    }
+
+    /**
+     * @return Schema
+     */
+    protected function companyName(): string
+    {
+        return $this->companyName;
     }
 
     /**
@@ -48,7 +69,7 @@ abstract class Schema
      * @param array $sameAs
      * @return Schema
      */
-    protected function person(string $name, string $image, array $sameAs): Schema
+    protected function person(string $name, string $image, ?array $sameAs = null): Schema
     {
         $this->person = (object)[
             '@type' => 'Person',
@@ -62,37 +83,34 @@ abstract class Schema
     /**
      * @see https://schema.org/Organization
      */
-    protected function organization(string $url, array $sameAs = null): Schema
+    protected function organization(string $logo, string $image): Schema
     {
+        $logo = $this->imageObject($logo, null, null);
+        $image = $this->imageObject($image, null, null);
         $this->organization = (object)[
             '@type' => 'Organization',
-            'name' => $this->company,
-            'url' => $url,
-            'logo' => $this->imageObject,
-            'image' => $this->imageObject,
-            'sameAs' => $sameAs
+            'name' => $this->companyName,
+            'url' => $this->companyUrl,
+            'logo' => $logo,
+            'image' => $image,
+            'sameAs' => ($this->companySameAs ?? null)
         ];
         return $this;
     }
 
     /**
      * @see https://schema.org/ImageObject
-     *
-     * @param string $url
-     * @param int $width
-     * @param int $height
-     * @return Schema
      */
-    protected function imageObject(string $url, int $width = 1280, int $height = 720): Schema
+    protected function imageObject(string $url, ?int $width = 1280, ?int $height = 720): array
     {
-        $this->imageObject = (object)[
+        $this->imageObject = [
             '@type' => 'ImageObject',
             'url' => $url,
             'width' => $width,
             'height' => $height,
-            'caption' => $this->company
+            'caption' => $this->companyName
         ];
-        return $this;
+        return $this->imageObject;
     }
 
     /**

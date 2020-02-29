@@ -19,13 +19,13 @@ abstract class Schema
     protected $imageObject;
 
     /** @var string */
-    protected $companyName;
+    protected $webPageName;
 
     /**  @var string */
-    protected $companyUrl;
+    protected $webPageUrl;
 
     /** @var array */
-    protected $companySameAs;
+    protected $webPageSameAs;
 
     /**
      * @see http://schema.org
@@ -51,9 +51,9 @@ abstract class Schema
      * @param string $name
      * @param string $image
      * @param array|null $sameAs
-     * @return Schema
+     * @return object
      */
-    protected function person(string $name, string $image, ?array $sameAs = null): Schema
+    protected function person(string $name, string $image, ?array $sameAs = null): object
     {
         $this->person = (object)[
             '@type' => 'Person',
@@ -61,7 +61,7 @@ abstract class Schema
             'image' => $image,
             'sameAs' => $sameAs
         ];
-        return $this;
+        return $this->person;
     }
 
     /**
@@ -71,19 +71,47 @@ abstract class Schema
      * @param string $image
      * @return Schema
      */
-    protected function organization(string $logo, string $image): Schema
-    {
+    protected function organization(
+        string $logo,
+        string $image,
+        ?array $address = null
+    ): object {
         $logo = $this->imageObject($logo, null, null);
         $image = $this->imageObject($image, null, null);
-        $this->organization = (object)[
+        $this->organization = [
             '@type' => 'Organization',
-            'name' => $this->companyName,
-            'url' => $this->companyUrl,
+            'name' => $this->webPageName,
+            'url' => $this->webPageUrl,
             'logo' => $logo,
             'image' => $image,
-            'sameAs' => ($this->companySameAs ?? null)
+            'sameAs' => ($this->webPageSameAs ?? null)
         ];
-        return $this;
+
+        if (!is_null($address)) {
+            $this->organization["address"] = $this->postalAddress(
+                $address["addressLocality"],
+                $address["addressRegion"],
+                $address["postalCode"],
+                $address["streetAddress"]);
+        }
+
+        return (object)$this->organization;
+    }
+
+    protected function postalAddress(
+        string $addressLocality,
+        string $addressRegion,
+        string $postalCode,
+        string $streetAddress
+    ): array {
+        $postalAddress = [
+            "@type" => "PostalAddress",
+            "addressLocality" => $addressLocality,
+            "addressRegion" => $addressRegion,
+            "postalCode" => $postalCode,
+            "streetAddress" => $streetAddress
+        ];
+        return $postalAddress;
     }
 
     /**
@@ -101,9 +129,10 @@ abstract class Schema
             'url' => $url,
             'width' => $width,
             'height' => $height,
-            'caption' => $this->companyName
+            'caption' => $this->webPageName
         ];
         return $this->imageObject;
+
     }
 
     /**

@@ -3,6 +3,7 @@
 
 namespace WilderAmorim\StructuredData;
 
+
 /**
  * Class BlogPosting
  * @package WilderAmorim\StructuredData
@@ -21,15 +22,14 @@ class BlogPosting extends Schema
 
     /**
      * BlogPosting constructor.
-     * @param Company $initialSchema
+     * @param WebPage $webPage
      */
-    public function __construct(Company $initialSchema)
+    public function __construct(WebPage $webPage)
     {
+        $this->webPageName = $webPage->name();
+        $this->webPageUrl = $webPage->url();
+        $this->webPageSameAs = $webPage->sameAs();
         $this->data = new \stdClass();
-
-        $this->companyName = $initialSchema->company;
-        $this->companyUrl = $initialSchema->url;
-        $this->companySameAs = $initialSchema->sameAs;
         parent::__construct();
     }
 
@@ -54,9 +54,9 @@ class BlogPosting extends Schema
      * @param string $name
      * @param string $image
      * @param array|null $sameAs
-     * @return Schema
+     * @return object
      */
-    public function author(string $name, string $image, array $sameAs = null): Schema
+    public function author(string $name, string $image, array $sameAs = null): object
     {
         return $this->person($name, $image, $sameAs);
     }
@@ -65,9 +65,9 @@ class BlogPosting extends Schema
      * @see https://schema.org/publisher
      *
      * @param string $image
-     * @return Schema
+     * @return object
      */
-    public function publisher(string $image): Schema
+    public function publisher(string $image): object
     {
         return $this->organization($image, $image);
     }

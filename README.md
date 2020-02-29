@@ -1,6 +1,7 @@
 # Structured Data
 
 [![Maintainer](http://img.shields.io/badge/maintainer-@wilderamorim-blue.svg?style=flat-square)](https://twitter.com/WilderAmorim)
+[![Maintainer](http://img.shields.io/badge/maintainer-@sergiodanilojr-blue.svg?style=flat-square)](https://twitter.com/sergiodanilojr)
 [![Source Code](http://img.shields.io/badge/source-wilderamorim/structured-data-blue.svg?style=flat-square)](https://github.com/wilderamorim/structured-data)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/wilderamorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/wilderamorim/structured-data)
 [![Latest Version](https://img.shields.io/github/release/wilderamorim/structured-data.svg?style=flat-square)](https://github.com/wilderamorim/structured-data/releases)
@@ -38,14 +39,14 @@ composer require wilderamorim/structured-data
 
 Para mais detalhes sobre como usar, veja uma pasta de exemplo no diretório do componente. Nela terá um exemplo de uso para cada classe. Ele funciona assim:
 
-#### Start Company:
+#### Start Web Page:
 
 ```php
 <?php
 require __DIR__ . "/../vendor/autoload.php";
-use WilderAmorim\StructuredData\Company;
+use WilderAmorim\StructuredData\WebPage;
 
-$company = new Company('Wayne Enterprises, Inc.', 'https://www.dccomics.com', [
+$webPage = new WebPage('Wayne Enterprises, Inc.', 'https://www.dccomics.com', [
     'https://www.facebook.com/facebook',
     'https://www.instagram.com/facebook'
 ]);
@@ -74,7 +75,7 @@ $post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-d
  * Schema: BlogPosting
  * @see https://schema.org/BlogPosting
  */
-$blogPosting = (new BlogPosting($company));
+$blogPosting = (new BlogPosting($webPage));
 $blogPosting->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified);
 $blogPosting->image("https://www.yourdomain.com/storage/{$post->cover}");
 $blogPosting->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}");

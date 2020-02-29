@@ -5,8 +5,9 @@ require __DIR__ . "/assets/config.php";
 require dirname(__DIR__, 1) . "/vendor/autoload.php";
 
 
-use WilderAmorim\StructuredData\Company;
+use WilderAmorim\StructuredData\WebPage;
 use WilderAmorim\StructuredData\BlogPosting;
+
 
 /**
  * SINGLE POST EXAMPLE
@@ -21,18 +22,42 @@ $post->post_modified = "2020-12-31";
 $post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-defines-me.jpg";
 
 /**
- * Start Company
+ * Start WebPage
  */
-$company = new Company('Wayne Enterprises, Inc.', 'https://www.dccomics.com', [
-    'https://www.facebook.com/facebook',
-    'https://www.instagram.com/facebook'
-]);
+$webPage = new WebPage();
+$webPage->start(
+    "Wayne Retado Inc.",
+    "Lorem Ipsum sit amet dolor...",
+    $post->cover,
+    $post->slug
+);
+$webPage->isPartOf(
+    $post->cover,
+    $post->cover
+);
+$webPage->about(
+    $post->cover
+);
+$webPage->creator(
+    $post->cover,
+    "Salvador",
+    "BA",
+    "40026-280",
+    "Largo do Pelourinho, 12. Centro",
+    "Wilder Amorim",
+    $post->cover,
+    ["github.com/wilderamorim"]
+);
+echo $webPage->render();
 
+echo "<br><hr><br>";
+
+//$webPage->debug();
 /**
  * Schema: BlogPosting
  * @see https://schema.org/BlogPosting
  */
-$blogPosting = (new BlogPosting($company));
+$blogPosting = (new BlogPosting($webPage));
 $blogPosting->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified);
 $blogPosting->image("https://www.yourdomain.com/storage/{$post->cover}");
 $blogPosting->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}");
@@ -53,4 +78,9 @@ $blogPosting->debug();
 <!--insert json-->
 <script type="application/ld+json">
     <?= $blogPosting->render(); ?>
+
+
+
+
+
 </script>

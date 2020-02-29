@@ -21,8 +21,9 @@ class BlogPosting extends Schema
 
     /**
      * BlogPosting constructor.
+     * @param Company $initialSchema
      */
-    public function __construct(InitialSchema $initialSchema)
+    public function __construct(Company $initialSchema)
     {
         $this->data = new \stdClass();
 
@@ -34,7 +35,6 @@ class BlogPosting extends Schema
 
     /**
      * @see https://schema.org/mainEntityOfPage
-     *
      * @param string $url
      * @param string $type
      * @return BlogPosting
@@ -49,6 +49,8 @@ class BlogPosting extends Schema
     }
 
     /**
+     * @see https://schema.org/author
+     *
      * @param string $name
      * @param string $image
      * @param array|null $sameAs
@@ -59,14 +61,22 @@ class BlogPosting extends Schema
         return $this->person($name, $image, $sameAs);
     }
 
-    public function publisher(string $image, array $sameAs = null): Schema
+    /**
+     * @see https://schema.org/publisher
+     *
+     * @param string $image
+     * @return Schema
+     */
+    public function publisher(string $image): Schema
     {
-        return $this->organization($image, $image, $sameAs);
+        return $this->organization($image, $image);
     }
 
     /**
+     * @see https://schema.org/image
+     *
      * @param string $url
-     * @return Schema
+     * @return array
      */
     public function image(string $url): array
     {
@@ -124,9 +134,9 @@ class BlogPosting extends Schema
     /**
      * @return string
      */
-    public function structuredData(): string
+    public function render(): string
     {
-        $structuredData = [
+        $render = [
             '@context' => self::CONTEXT,
             '@type' => self::TYPE,
             'headline' => $this->data->header->headline,
@@ -139,7 +149,7 @@ class BlogPosting extends Schema
             'publisher' => [$this->organization],
             'image' => $this->imageObject
         ];
-        return $this->json($structuredData);
+        return $this->json($render);
     }
 
     /**

@@ -5,13 +5,9 @@ require __DIR__ . "/assets/config.php";
 require dirname(__DIR__, 1) . "/vendor/autoload.php";
 
 
+use WilderAmorim\StructuredData\Company;
 use WilderAmorim\StructuredData\BlogPosting;
-use WilderAmorim\StructuredData\InitialSchema;
 
-//Constructor WEB
-$initialSchema = new InitialSchema('Wayne Enterprises, Inc.', 'https://www.dccomics.com', ['NÃO testando rede social']);
-
-var_dump($initialSchema);
 /**
  * SINGLE POST EXAMPLE
  */
@@ -25,34 +21,36 @@ $post->post_modified = "2020-12-31";
 $post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-defines-me.jpg";
 
 /**
+ * Start Company
+ */
+$company = new Company('Wayne Enterprises, Inc.', 'https://www.dccomics.com', [
+    'https://www.facebook.com/facebook',
+    'https://www.instagram.com/facebook'
+]);
+
+/**
  * Schema: BlogPosting
  * @see https://schema.org/BlogPosting
  */
-$blogPosting = (new BlogPosting($initialSchema));
-
+$blogPosting = (new BlogPosting($company));
 $blogPosting->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified);
-$blogPosting->image($post->cover);
-$blogPosting->publisher($post->cover);
-$blogPosting->author("Bruce Wayne", $post->cover);
-$blogPosting->mainEntityOfPage($post->slug);
+$blogPosting->image("https://www.yourdomain.com/storage/{$post->cover}");
+$blogPosting->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}");
+$blogPosting->publisher('https://www.yourdomain.com/logo.png');
+$blogPosting->author('Bruce Wayne', 'https://gravatar.com/avatar', [
+    'https://www.facebook.com/zuck',
+    'https://www.instagram.com/zuck'
+]);
 
-var_dump($blogPosting);
-
-//json
-echo $blogPosting->structuredData();
+//json render
+echo $blogPosting->render();
 
 //debug
 $blogPosting->debug();
-
-echo "<br>";
-echo "<hr>";
-echo "<br>";
-
-var_dump($blogPosting->data()->publisher->logo);
 
 ?>
 
 <!--insert json-->
 <script type="application/ld+json">
-    <?= $blogPosting->structuredData(); ?>
+    <?= $blogPosting->render(); ?>
 </script>

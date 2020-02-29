@@ -37,28 +37,12 @@ abstract class Schema
      */
     const TYPE = 'WebPage';
 
-
     /**
      * Schema constructor.
      */
     public function __construct()
     {
-    }
-
-    /**
-     * @return Schema
-     */
-    protected function companyUrl(): string
-    {
-        return $this->companyUrl;
-    }
-
-    /**
-     * @return Schema
-     */
-    protected function companyName(): string
-    {
-        return $this->companyName;
+        //
     }
 
     /**
@@ -66,7 +50,7 @@ abstract class Schema
      *
      * @param string $name
      * @param string $image
-     * @param array $sameAs
+     * @param array|null $sameAs
      * @return Schema
      */
     protected function person(string $name, string $image, ?array $sameAs = null): Schema
@@ -82,6 +66,10 @@ abstract class Schema
 
     /**
      * @see https://schema.org/Organization
+     *
+     * @param string $logo
+     * @param string $image
+     * @return Schema
      */
     protected function organization(string $logo, string $image): Schema
     {
@@ -100,6 +88,11 @@ abstract class Schema
 
     /**
      * @see https://schema.org/ImageObject
+     *
+     * @param string $url
+     * @param int|null $width
+     * @param int|null $height
+     * @return array
      */
     protected function imageObject(string $url, ?int $width = 1280, ?int $height = 720): array
     {

@@ -38,15 +38,24 @@ composer require wilder-amorim/structured-data
 
 Para mais detalhes sobre como usar, veja uma pasta de exemplo no diretório do componente. Nela terá um exemplo de uso para cada classe. Ele funciona assim:
 
+#### Start Company:
+
+```php
+<?php
+require __DIR__ . "/../vendor/autoload.php";
+use WilderAmorim\StructuredData\Company;
+
+$company = new Company('Wayne Enterprises, Inc.', 'https://www.dccomics.com', [
+    'https://www.facebook.com/facebook',
+    'https://www.instagram.com/facebook'
+]);
+```
+
 #### BlogPosting:
 
 ```php
 <?php
-
-
 require __DIR__ . "/../vendor/autoload.php";
-
-
 use WilderAmorim\StructuredData\BlogPosting;
 
 /**
@@ -65,30 +74,36 @@ $post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-d
  * Schema: BlogPosting
  * @see https://schema.org/BlogPosting
  */
-$blogPost = (new BlogPosting('Wayne Enterprises, Inc.', 'https://www.dccomics.com'))
-    ->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified)
-    ->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}")
-    ->author('Bruce Wayne', 'https://gravatar.com/avatar', [
-        'https://www.facebook.com/zuck',
-        'https://www.instagram.com/zuck'
-    ])
-    ->publisher('https://www.yourdomain.com/logo.png', [
-        'https://www.facebook.com/facebook',
-        'https://www.instagram.com/facebook'
-    ])
-    ->image("https://www.yourdomain.com/storage/{$post->cover}");
+$blogPosting = (new BlogPosting($company));
+$blogPosting->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified);
+$blogPosting->image("https://www.yourdomain.com/storage/{$post->cover}");
+$blogPosting->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}");
+$blogPosting->publisher('https://www.yourdomain.com/logo.png');
+$blogPosting->author('Bruce Wayne', 'https://gravatar.com/avatar', [
+    'https://www.facebook.com/zuck',
+    'https://www.instagram.com/zuck'
+]);
+```
 
-//json
-echo $blogPost->structuredData();
+#### Render Json:
 
-//debug
-$blogPost->debug();
+```php
+<?php
+echo $blogPosting->render();
+```
 
-?>
+#### Debug:
 
-<!--insert json-->
+```php
+<?php
+$blogPosting->debug();
+```
+
+#### Insert Json:
+
+```html
 <script type="application/ld+json">
-    <?= $blogPost->structuredData(); ?>
+    <?= $blogPosting->render(); ?>
 </script>
 ```
 

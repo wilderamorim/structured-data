@@ -1,13 +1,13 @@
 # Structured Data
 
-[![Maintainer](http://img.shields.io/badge/maintainer-@wilder-amorim-blue.svg?style=flat-square)](https://twitter.com/WilderAmorim)
-[![Source Code](http://img.shields.io/badge/source-wilder-amorim/structured-data-blue.svg?style=flat-square)](https://github.com/wilder-amorim/structured-data)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/wilder-amorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/wilder-amorim/structured-data)
-[![Latest Version](https://img.shields.io/github/release/wilder-amorim/structured-data.svg?style=flat-square)](https://github.com/wilder-amorim/structured-data/releases)
+[![Maintainer](http://img.shields.io/badge/maintainer-@wilderamorim-blue.svg?style=flat-square)](https://twitter.com/WilderAmorim)
+[![Source Code](http://img.shields.io/badge/source-wilderamorim/structured-data-blue.svg?style=flat-square)](https://github.com/wilderamorim/structured-data)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/wilderamorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/wilderamorim/structured-data)
+[![Latest Version](https://img.shields.io/github/release/wilderamorim/structured-data.svg?style=flat-square)](https://github.com/wilderamorim/structured-data/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build](https://img.shields.io/scrutinizer/build/g/wilder-amorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/wilder-amorim/structured-data)
-[![Quality Score](https://img.shields.io/scrutinizer/g/wilder-amorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/wilder-amorim/structured-data)
-[![Total Downloads](https://img.shields.io/packagist/dt/wilder-amorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/cwilder-amorim/structured-data)
+[![Build](https://img.shields.io/scrutinizer/build/g/wilderamorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/wilderamorim/structured-data)
+[![Quality Score](https://img.shields.io/scrutinizer/g/wilderamorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/wilderamorim/structured-data)
+[![Total Downloads](https://img.shields.io/packagist/dt/wilderamorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/cwilderamorim/structured-data)
 
 ###### Structured Data (schema.org) is a set of extensible schemas makes it easier for webmasters and developers to embed  structured data on their web pages for use by search engines and other applications.
 
@@ -23,13 +23,13 @@ Dados estruturados (schema.org) é um conjunto de esquemas extensíveis que faci
 Structured Data is available via Composer:
 
 ```bash
-"wilder-amorim/structured-data": "^1.0"
+"wilderamorim/structured-data": "^1.0"
 ```
 
 or run
 
 ```bash
-composer require wilder-amorim/structured-data
+composer require wilderamorim/structured-data
 ```
 
 ## Documentation
@@ -109,7 +109,7 @@ $blogPosting->debug();
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/wilder-amorim/structured-data/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/wilderamorim/structured-data/blob/master/CONTRIBUTING.md) for details.
 
 ## Support
 
@@ -121,11 +121,11 @@ Thank you
 
 ## Credits
 
-- [Wilder Amorim](https://github.com/wilder-amorim) (Developer)
+- [Wilder Amorim](https://github.com/wilderamorim) (Developer)
 - [Sérgio Danilo Jr.](https://github.com/sergiodanilojr) (Developer)
 - [Agência Uebi](https://www.uebi.com.br) (Team)
-- [All Contributors](https://github.com/wilder-amorim/structured-data/contributors) (This Rock)
+- [All Contributors](https://github.com/wilderamorim/structured-data/contributors) (This Rock)
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/wilder-amorim/structured-data/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/wilderamorim/structured-data/blob/master/LICENSE) for more information.

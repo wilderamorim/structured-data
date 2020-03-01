@@ -3,7 +3,6 @@
 
 namespace WilderAmorim\StructuredData;
 
-
 /**
  * Class BlogPosting
  * @package WilderAmorim\StructuredData
@@ -34,53 +33,11 @@ class BlogPosting extends Schema
     }
 
     /**
-     * @see https://schema.org/mainEntityOfPage
-     * @param string $url
-     * @param string $type
-     * @return BlogPosting
-     */
-    public function mainEntityOfPage(string $url, string $type = Schema::TYPE): BlogPosting
-    {
-        $this->data->mainEntityOfPage = [
-            '@type' => $type,
-            '@id' => $url
-        ];
-        return $this;
-    }
-
-    /**
-     * @see https://schema.org/author
-     *
-     * @param string $name
-     * @param string $image
-     * @param array|null $sameAs
      * @return object
      */
-    public function author(string $name, string $image, array $sameAs = null): object
+    public function header(): object
     {
-        return $this->person($name, $image, $sameAs);
-    }
-
-    /**
-     * @see https://schema.org/publisher
-     *
-     * @param string $image
-     * @return object
-     */
-    public function publisher(string $image): object
-    {
-        return $this->organization($image, $image);
-    }
-
-    /**
-     * @see https://schema.org/image
-     *
-     * @param string $url
-     * @return array
-     */
-    public function image(string $url): array
-    {
-        return $this->imageObject($url);
+        return $this->data->header;
     }
 
     /**
@@ -109,11 +66,54 @@ class BlogPosting extends Schema
     }
 
     /**
+     * @see https://schema.org/mainEntityOfPage
+     *
+     * @param string $url
+     * @param string $type
+     * @return BlogPosting
+     */
+    public function mainEntityOfPage(string $url, string $type = Schema::TYPE): BlogPosting
+    {
+        $this->data->mainEntityOfPage = [
+            '@type' => $type,
+            '@id' => $url
+        ];
+        return $this;
+    }
+
+    /**
+     * @see https://schema.org/image
+     *
+     * @param string $url
+     * @return array
+     */
+    public function image(string $url): array
+    {
+        return $this->imageObject($url);
+    }
+
+    /**
+     * @see https://schema.org/author
+     *
+     * @param string $name
+     * @param string $image
+     * @param array|null $sameAs
      * @return object
      */
-    public function header(): object
+    public function author(string $name, string $image, array $sameAs = null): object
     {
-        return $this->data->header;
+        return $this->person($name, $image, $sameAs);
+    }
+
+    /**
+     * @see https://schema.org/publisher
+     *
+     * @param string $image
+     * @return object
+     */
+    public function publisher(string $image): object
+    {
+        return $this->organization($image, $image);
     }
 
     /**
@@ -124,17 +124,18 @@ class BlogPosting extends Schema
         $this->data = (object)[
             'header' => $this->header(),
             'mainEntityOfPage' => (object)$this->data->mainEntityOfPage,
-            'author' => (object)$this->person,
             'image' => (object)$this->imageObject,
+            'author' => (object)$this->person,
             'publisher' => (object)$this->organization
         ];
         return $this->data;
     }
 
     /**
+     * @param bool $tag
      * @return string
      */
-    public function render(): string
+    public function render(bool $tag = false): string
     {
         $render = [
             '@context' => self::CONTEXT,
@@ -144,11 +145,16 @@ class BlogPosting extends Schema
             'datePublished' => $this->data->header->datePublished,
             'dateModified' => $this->data->header->dateModified,
             'articleBody' => $this->data->header->articleBody,
-            'author' => $this->person,
             'mainEntityOfPage' => $this->data->mainEntityOfPage,
-            'publisher' => [$this->organization],
-            'image' => $this->imageObject
+            'image' => $this->imageObject,
+            'author' => $this->person,
+            'publisher' => [$this->organization]
         ];
+
+        if ($tag) {
+            return '<script type="application/ld+json">' . $this->json($render) . '</script>';
+        }
+
         return $this->json($render);
     }
 

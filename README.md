@@ -46,10 +46,33 @@ Para mais detalhes sobre como usar, veja uma pasta de exemplo no diretório do c
 require __DIR__ . "/../vendor/autoload.php";
 use WilderAmorim\StructuredData\WebPage;
 
-$webPage = new WebPage('Wayne Enterprises, Inc.', 'https://www.dccomics.com', [
-    'https://www.facebook.com/facebook',
-    'https://www.instagram.com/facebook'
-]);
+$webPage = new WebPage();
+$webPage->start(
+    'Wayne Enterprises, Inc.',
+    'Wayne Enterprises is a big, growing multinational company',
+    'https://www.yourdomain.com/wayne-enterprises.jpg',
+    'https://www.dccomics.com',
+    'en-US'
+);
+$webPage->isPartOf(
+    'https://www.yourdomain.com/logo.png',
+    'https://www.yourdomain.com/logo.png'
+);
+$webPage->about(
+    'https://www.yourdomain.com/logo.png'
+);
+$webPage->creator(
+    'https://www.yourdomain.com/logo.png',
+    'Gotham City',
+    'DC',
+    '12345-678',
+    '1007 Mountain Drive',
+    'Bruce Wayne',
+    'https://gravatar.com/avatar', [
+        'https://www.facebook.com/zuck',
+        'https://www.instagram.com/zuck'
+    ]
+);
 ```
 
 #### BlogPosting:
@@ -75,7 +98,7 @@ $post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-d
  * Schema: BlogPosting
  * @see https://schema.org/BlogPosting
  */
-$blogPosting = (new BlogPosting($webPage));
+$blogPosting = new BlogPosting($webPage);
 $blogPosting->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified);
 $blogPosting->image("https://www.yourdomain.com/storage/{$post->cover}");
 $blogPosting->mainEntityOfPage("https://www.yourdomain.com/blog/{$post->slug}");
@@ -86,26 +109,30 @@ $blogPosting->author('Bruce Wayne', 'https://gravatar.com/avatar', [
 ]);
 ```
 
-#### Render Json:
+##### Render JSON:
 
 ```php
-<?php
-echo $blogPosting->render();
+<?php echo $blogPosting->render(); // {"@context":"http://schema.org","@type": ...
 ```
 
-#### Debug:
+##### Render JSON-LD auto script tag:
 
 ```php
-<?php
-$blogPosting->debug();
+<?php echo $blogPosting->render(true); // <script type="application/ld+json">{"@context":"http://schema.org","@type": ... </script>
 ```
 
-#### Insert Json:
+##### Render JSON manually script tag:
 
 ```html
 <script type="application/ld+json">
-    <?= $blogPosting->render(); ?>
+    <?= $blogPosting->render(); ?> // {"@context":"http://schema.org","@type": ...
 </script>
+```
+
+##### Debug:
+
+```php
+<?php $blogPosting->debug();
 ```
 
 ## Contributing

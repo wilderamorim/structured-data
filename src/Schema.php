@@ -18,13 +18,13 @@ abstract class Schema
     /** @var */
     protected $imageObject;
 
-    /** @var string */
+    /** @var */
     protected $webPageName;
 
-    /**  @var string */
+    /** @var */
     protected $webPageUrl;
 
-    /** @var array */
+    /** @var */
     protected $webPageSameAs;
 
     /**
@@ -69,7 +69,8 @@ abstract class Schema
      *
      * @param string $logo
      * @param string $image
-     * @return Schema
+     * @param array|null $address
+     * @return object
      */
     protected function organization(
         string $logo,
@@ -88,16 +89,25 @@ abstract class Schema
         ];
 
         if (!is_null($address)) {
-            $this->organization["address"] = $this->postalAddress(
-                $address["addressLocality"],
-                $address["addressRegion"],
-                $address["postalCode"],
-                $address["streetAddress"]);
+            $this->organization['address'] = $this->postalAddress(
+                $address['addressLocality'],
+                $address['addressRegion'],
+                $address['postalCode'],
+                $address['streetAddress']
+            );
         }
-
         return (object)$this->organization;
     }
 
+    /**
+     * @see https://schema.org/PostalAddress
+     *
+     * @param string $addressLocality
+     * @param string $addressRegion
+     * @param string $postalCode
+     * @param string $streetAddress
+     * @return array
+     */
     protected function postalAddress(
         string $addressLocality,
         string $addressRegion,
@@ -105,11 +115,11 @@ abstract class Schema
         string $streetAddress
     ): array {
         $postalAddress = [
-            "@type" => "PostalAddress",
-            "addressLocality" => $addressLocality,
-            "addressRegion" => $addressRegion,
-            "postalCode" => $postalCode,
-            "streetAddress" => $streetAddress
+            '@type' => 'PostalAddress',
+            'addressLocality' => $addressLocality,
+            'addressRegion' => $addressRegion,
+            'postalCode' => $postalCode,
+            'streetAddress' => $streetAddress
         ];
         return $postalAddress;
     }

@@ -1,6 +1,6 @@
 # Structured Data @ElePHPant
 
-[![Maintainer](http://img.shields.io/badge/maintainer-@wilderamorim-blue.svg?style=flat-square)](https://twitter.com/ElePHPant)
+[![Maintainer](http://img.shields.io/badge/maintainer-@wilderamorim-blue.svg?style=flat-square)](https://twitter.com/WilderAmorim)
 [![Maintainer](http://img.shields.io/badge/maintainer-@sergiodanilojr-blue.svg?style=flat-square)](https://twitter.com/sergiodanilojr)
 [![Source Code](http://img.shields.io/badge/source-wilderamorim/structured-data-blue.svg?style=flat-square)](https://github.com/wilderamorim/structured-data)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/elephpant/structured-data.svg?style=flat-square)](https://packagist.org/packages/elephpant/structured-data)

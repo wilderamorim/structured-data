@@ -15,7 +15,7 @@ class WebPage extends Schema
     protected $data;
 
     /**
-     * @see https://schema.org/WebPage
+     * @link https://schema.org/WebPage
      */
     const TYPE = 'WebPage';
 
@@ -105,7 +105,7 @@ class WebPage extends Schema
     }
 
     /**
-     * @see https://schema.org/isPartOf
+     * @link https://schema.org/isPartOf
      *
      * @param string $logo
      * @param string $image
@@ -127,7 +127,7 @@ class WebPage extends Schema
     }
 
     /**
-     * @see https://schema.org/about
+     * @link https://schema.org/about
      *
      * @param string $image
      * @return WebPage
@@ -139,7 +139,7 @@ class WebPage extends Schema
     }
 
     /**
-     * @see https://schema.org/creator
+     * @link https://schema.org/creator
      *
      * @param string $organizationImage
      * @param string $addressLocality

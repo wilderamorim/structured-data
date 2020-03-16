@@ -28,12 +28,12 @@ abstract class Schema
     protected $webPageSameAs;
 
     /**
-     * @see http://schema.org
+     * @link http://schema.org
      */
     const CONTEXT = 'http://schema.org';
 
     /**
-     * @see https://schema.org/WebPage
+     * @link https://schema.org/WebPage
      */
     const TYPE = 'WebPage';
 
@@ -46,7 +46,7 @@ abstract class Schema
     }
 
     /**
-     * @see https://schema.org/Person
+     * @link https://schema.org/Person
      *
      * @param string $name
      * @param string $image
@@ -65,7 +65,7 @@ abstract class Schema
     }
 
     /**
-     * @see https://schema.org/Organization
+     * @link https://schema.org/Organization
      *
      * @param string $logo
      * @param string $image
@@ -100,7 +100,7 @@ abstract class Schema
     }
 
     /**
-     * @see https://schema.org/PostalAddress
+     * @link https://schema.org/PostalAddress
      *
      * @param string $addressLocality
      * @param string $addressRegion
@@ -125,7 +125,7 @@ abstract class Schema
     }
 
     /**
-     * @see https://schema.org/ImageObject
+     * @link https://schema.org/ImageObject
      *
      * @param string $url
      * @param int|null $width

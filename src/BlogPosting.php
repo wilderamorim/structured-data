@@ -15,7 +15,7 @@ class BlogPosting extends Schema
     private $data;
 
     /**
-     * @see https://schema.org/BlogPosting
+     * @link https://schema.org/BlogPosting
      */
     const TYPE = 'BlogPosting';
 
@@ -66,7 +66,7 @@ class BlogPosting extends Schema
     }
 
     /**
-     * @see https://schema.org/mainEntityOfPage
+     * @link https://schema.org/mainEntityOfPage
      *
      * @param string $url
      * @param string $type
@@ -82,7 +82,7 @@ class BlogPosting extends Schema
     }
 
     /**
-     * @see https://schema.org/image
+     * @link https://schema.org/image
      *
      * @param string $url
      * @return array
@@ -93,7 +93,7 @@ class BlogPosting extends Schema
     }
 
     /**
-     * @see https://schema.org/author
+     * @link https://schema.org/author
      *
      * @param string $name
      * @param string $image
@@ -106,7 +106,7 @@ class BlogPosting extends Schema
     }
 
     /**
-     * @see https://schema.org/publisher
+     * @link https://schema.org/publisher
      *
      * @param string $image
      * @return object

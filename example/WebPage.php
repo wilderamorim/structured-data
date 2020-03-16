@@ -10,7 +10,7 @@ use ElePHPant\StructuredData\WebPage;
 
 /**
  * Schema: WebPage
- * @see https://schema.org/WebPage
+ * @link https://schema.org/WebPage
  */
 $webPage = new WebPage();
 $webPage->start(

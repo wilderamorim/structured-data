@@ -96,7 +96,7 @@ $post->cover = "images/2020/12/it-s-not-who-i-am-underneath-but-what-i-do-that-d
 
 /**
  * Schema: BlogPosting
- * @see https://schema.org/BlogPosting
+ * @link https://schema.org/BlogPosting
  */
 $blogPosting = new BlogPosting($webPage);
 $blogPosting->start($post->title, $post->subtitle, $post->content, $post->post_date, $post->post_modified);

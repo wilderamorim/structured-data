@@ -8,7 +8,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build](https://img.shields.io/scrutinizer/build/g/wilderamorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/wilderamorim/structured-data)
 [![Quality Score](https://img.shields.io/scrutinizer/g/wilderamorim/structured-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/wilderamorim/structured-data)
-[![Total Downloads](https://img.shields.io/packagist/dt/wilderamorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/cwilderamorim/structured-data)
+[![Total Downloads](https://img.shields.io/packagist/dt/wilderamorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/wilderamorim/structured-data)
 
 ###### Structured Data (schema.org) is a set of extensible schemas makes it easier for webmasters and developers to embed  structured data on their web pages for use by search engines and other applications.
 

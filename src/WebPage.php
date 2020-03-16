@@ -1,11 +1,11 @@
 <?php
 
 
-namespace WilderAmorim\StructuredData;
+namespace ElePHPant\StructuredData;
 
 /**
  * Class WebPage
- * @package WilderAmorim\StructuredData
+ * @package ElePHPant\StructuredData
  */
 class WebPage extends Schema
 {

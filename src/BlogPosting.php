@@ -1,11 +1,11 @@
 <?php
 
 
-namespace WilderAmorim\StructuredData;
+namespace ElePHPant\StructuredData;
 
 /**
  * Class BlogPosting
- * @package WilderAmorim\StructuredData
+ * @package ElePHPant\StructuredData
  */
 class BlogPosting extends Schema
 {

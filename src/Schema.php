@@ -1,11 +1,11 @@
 <?php
 
 
-namespace WilderAmorim\StructuredData;
+namespace ElePHPant\StructuredData;
 
 /**
  * Class Schema
- * @package WilderAmorim\StructuredData
+ * @package ElePHPant\StructuredData
  */
 abstract class Schema
 {

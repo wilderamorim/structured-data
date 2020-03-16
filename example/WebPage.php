@@ -5,7 +5,7 @@ require __DIR__ . "/assets/config.php";
 require dirname(__DIR__, 1) . "/vendor/autoload.php";
 
 
-use WilderAmorim\StructuredData\WebPage;
+use ElePHPant\StructuredData\WebPage;
 
 
 /**

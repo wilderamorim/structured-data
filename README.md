@@ -1,6 +1,6 @@
 # Structured Data
 
-[![Maintainer](http://img.shields.io/badge/maintainer-@wilderamorim-blue.svg?style=flat-square)](https://twitter.com/WilderAmorim)
+[![Maintainer](http://img.shields.io/badge/maintainer-@wilderamorim-blue.svg?style=flat-square)](https://twitter.com/ElePHPant)
 [![Maintainer](http://img.shields.io/badge/maintainer-@sergiodanilojr-blue.svg?style=flat-square)](https://twitter.com/sergiodanilojr)
 [![Source Code](http://img.shields.io/badge/source-wilderamorim/structured-data-blue.svg?style=flat-square)](https://github.com/wilderamorim/structured-data)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/wilderamorim/structured-data.svg?style=flat-square)](https://packagist.org/packages/wilderamorim/structured-data)
@@ -44,7 +44,7 @@ Para mais detalhes sobre como usar, veja uma pasta de exemplo no diretório do c
 ```php
 <?php
 require __DIR__ . "/../vendor/autoload.php";
-use WilderAmorim\StructuredData\WebPage;
+use ElePHPant\StructuredData\WebPage;
 
 $webPage = new WebPage();
 $webPage->start(
@@ -80,7 +80,7 @@ $webPage->creator(
 ```php
 <?php
 require __DIR__ . "/../vendor/autoload.php";
-use WilderAmorim\StructuredData\BlogPosting;
+use ElePHPant\StructuredData\BlogPosting;
 
 /**
  * SINGLE POST EXAMPLE
